@@ -36,11 +36,13 @@ jobs:
         shell: msys2 {0}
         run: |
           wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/Prerequisites/Mingw64dlls14.1.0.7z
-          7z x Mingw64dlls14.1.0.7z -o/opt/codeblocks/bin
+          wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/Prerequisites/wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z
+          7z x Mingw64dlls14.1.0.7z wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z -o/opt/codeblocks/bin
           export PATH=$PATH:/opt/codeblocks/bin
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
           cd codeblocks_sfmirror/src/
           cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
+      
       - uses: actions/upload-artifact@v4
         with:
           name: Makefile
