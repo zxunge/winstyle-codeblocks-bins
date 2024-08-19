@@ -25,25 +25,23 @@ jobs:
           msystem: MINGW32
           location: D:\
           install: >-
-            mingw-w64-i686-toolchain
-            mingw-w64-i686-drmingw
-            mingw-w64-i686-wxwidgets3.2-common-libs
-            mingw-w64-i686-wxwidgets3.2-common
-            mingw-w64-i686-wxwidgets3.2-msw
-            mingw-w64-i686-wxwidgets3.2-msw-libs
             zip
             unzip
+            p7zip
             git
-            mingw-w64-i686-hunspell
             mingw-w64-i686-boost
 
       # Runs a set of commands using the runners shell
       - name: build32
         shell: msys2 {0}
         run: |
-          wget -q https://github.com/zxunge/i686-codeblocks-builds/releases/download/r13542/codeblocks.zip
-          unzip codeblocks.zip -d /opt/codeblocks/
+          wget -q https://wxstuff.xaviou.fr/download/codeblocks/windows/CB_20240626_rev13533_wx32_win64.7z
+          7z x CB_20240626_rev13533_wx32_win64.7z -o /opt/codeblocks/bin
           export PATH=$PATH:/opt/codeblocks/bin
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
           cd codeblocks_sfmirror/src/
-          codeblocks --batch-build-notify --no-batch-window-close --target=All --build CodeBlocks-unix.cbp
+          cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
+      - uses: actions/upload-artifacts@v4
+        with:
+          name: Makefile
+          path: ${{ github.workspace }}\codeblocks_sfmirror\src\Makefile_core
