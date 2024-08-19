@@ -25,7 +25,6 @@ jobs:
           msystem: MINGW32
           location: D:\
           install: >-
-            zip
             unzip
             p7zip
             git
@@ -46,7 +45,8 @@ jobs:
           7z x ./wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z -o/opt/codeblocks/bin
           7z x ./CB_20240815_rev13542_win64.7z -o/opt/codeblocks/bin
           7z x ./wxWidgets-3.2.5-21-stl-cb-winlibs1420.7z -o/opt/wxwidgets3.2
-          export PATH=$PATH:/opt/codeblocks/bin:/opt/mingw32/bin
+          git clone https://github.com/bmatzelle/gow.git /opt/gow
+          export PATH=$PATH:/opt/codeblocks/bin:/opt/mingw32/bin:/opt/gow/bin
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
           cd codeblocks_sfmirror/src/
           #cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
