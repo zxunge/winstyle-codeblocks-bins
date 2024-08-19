@@ -41,7 +41,7 @@ jobs:
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
           cd codeblocks_sfmirror/src/
           cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
-      - uses: actions/upload-artifacts@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: Makefile
           path: ${{ github.workspace }}\codeblocks_sfmirror\src\Makefile_core
