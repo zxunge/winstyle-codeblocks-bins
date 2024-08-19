@@ -36,7 +36,7 @@ jobs:
         shell: msys2 {0}
         run: |
           wget -q https://wxstuff.xaviou.fr/download/codeblocks/windows/CB_20240626_rev13533_wx32_win64.7z
-          7z x CB_20240626_rev13533_wx32_win64.7z -o /opt/codeblocks/bin
+          7z x CB_20240626_rev13533_wx32_win64.7z -o/opt/codeblocks/bin
           export PATH=$PATH:/opt/codeblocks/bin
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
           cd codeblocks_sfmirror/src/
