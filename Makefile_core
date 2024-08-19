@@ -955,7 +955,7 @@ before_sdk:
 
 after_sdk: 
 	cmd /c if not exist devel32\share\CodeBlocks mkdir devel32\share\CodeBlocks
-	zip -jq9 devel32\\share\\CodeBlocks\\manager_resources.zip .\\sdk\\resources\\*.xrc
+	zip -jq9 devel32/share/CodeBlocks/manager_resources.zip sdk/resources/*.xrc
 	cmd /c "cd sdk\resources & zip -0 -q ..\..\devel32\share\CodeBlocks\manager_resources.zip images\*.png images\8x8\*.png images\10x10\*.png images\12x12\*.png images\16x16\*.png images\20x20\*.png images\24x24\*.png images\28x28\*.png images\32x32\*.png images\40x40\*.png images\48x48\*.png images\56x56\*.png images\64x64\*.png images\svg\*.svg"
 
 sdk: before_sdk out_sdk after_sdk
@@ -1350,8 +1350,8 @@ before_src:
 
 after_src: 
 	cmd /c if not exist devel32\share\CodeBlocks mkdir devel32\share\CodeBlocks
-	zip -jq9 devel32\share\CodeBlocks\resources.zip src\resources\*.xrc
-	zip -jq9 devel32\share\CodeBlocks\start_here.zip src\resources\start_here\*.html src\resources\start_here\*.png
+	zip -jq9 devel32/share/CodeBlocks/resources.zip src/resources/*.xrc
+	zip -jq9 devel32\share\CodeBlocks/start_here.zip src/resources/start_here\*.html src\resources\start_here\*.png
 	cmd /c "cd src\resources & zip -0 -q ..\..\devel32\share\CodeBlocks\resources.zip images\*.png images\16x16\*.png"
 	cmd /c if not exist devel32\exchndl.dll if exist exchndl\win32\bin\*.dll xcopy /Y exchndl\win32\bin\*.dll devel32\
 	cmd /c if not exist devel32\symsrv.yes if exist exchndl\win32\bin\symsrv.yes xcopy /Y exchndl\win32\bin\symsrv.yes devel32\
