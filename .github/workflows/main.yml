@@ -60,4 +60,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: codeblocks
-          path: ${{ github.workspace }}\codeblocks_sfmirror\src\Makefile_core
+          path: ${{ github.workspace }}\codeblocks_sfmirror
