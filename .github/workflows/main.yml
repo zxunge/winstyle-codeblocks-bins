@@ -62,7 +62,6 @@ jobs:
         run: |
           cd ${{ github.workspace }}\codeblocks_sfmirror\src
           setx Path "D:\msys64\opt\mingw32\bin;D:\msys64\opt\gow\bin;" /m
-          ren C:\mingw64 C:\mingw641
           mingw32-make -f Makefile_core all WX32_INCLUDE=D:\msys64\opt\wxwidgets3.2\include WX32_LIB=D:\msys64\opt\wxwidgets3.2\lib TARGET_OBJECT_DIR=.objs32
       
       - uses: actions/upload-artifact@v4
