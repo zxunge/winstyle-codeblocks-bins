@@ -57,10 +57,11 @@ jobs:
           #cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
 
       - name: build CB inside cmd
+        shell: cmd
         run: |
           cd ${{ github.workspace }}\codeblocks_sfmirror\src
-          Copy-Item "../../Makefile_core" -Destination "."
-          $Env:Path = "D:\msys64\opt\mingw32\bin;D:\msys64\opt\gow\bin;" + $Env:Path
+          copy "../../Makefile_core" "."
+          setx /m "path" "D:\msys64\opt\mingw32\bin;D:\msys64\opt\gow\bin;"
           mingw32-make -f Makefile_core all WX32_INCLUDE=D:\msys64\opt\wxwidgets3.2\include WX32_LIB=D:\msys64\opt\wxwidgets3.2\lib TARGET_OBJECT_DIR=.objs32
       
       - uses: actions/upload-artifact@v4
