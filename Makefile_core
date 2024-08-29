@@ -9,11 +9,11 @@ WX_CFG =
 WX_SUFFIX = u
 WX_VERSION = 32
 
-CC = gcc.exe
-CXX = g++.exe
-AR = ar.exe
-LD = g++.exe
-WINDRES = windres.exe
+CC = D:\msys64\opt\mingw32\bin\gcc.exe
+CXX = D:\msys64\opt\mingw32\bin\g++.exe
+AR = D:\msys64\opt\mingw32\bin\ar.exe
+LD = D:\msys64\opt\mingw32\bin\g++.exe
+WINDRES = D:\msys64\opt\mingw32\bin\windres.exe
 
 INC = -I$(WX32_INCLUDE) -I$(WX32_LIB)\gcc_dll$(WX_CFG)\msw$(WX_SUFFIX) -Isdk\\wxscintilla\\include -Iinclude\\tinyxml
 CFLAGS = -Wall -std=gnu++11 $(CB_RELEASE_TYPE) -pipe -mthreads -fmessage-length=0 -fexceptions -Winvalid-pch -DHAVE_W32API_H -D__WXMSW__ -DWXUSINGDLL -DcbDEBUG -DCB_PRECOMP -DwxUSE_UNICODE
