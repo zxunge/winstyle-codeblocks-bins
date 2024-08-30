@@ -25,6 +25,7 @@ jobs:
           msystem: MINGW32
           location: D:\
           install: >-
+            zip
             unzip
             p7zip
             git
@@ -52,20 +53,20 @@ jobs:
           git clone https://github.com/bmatzelle/gow.git /c/temp/gow
           export PATH=$PATH:/opt/codeblocks/bin
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
-          #cd codeblocks_sfmirror/src/
-          #cbp2make --config platform -windows
-          #cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
+          cd codeblocks_sfmirror/src/
+          cbp2make --config platform -unix
+          cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
           cp Makefile_core codeblocks_sfmirror/src/
 
-      - name: build CB inside cmd
-        shell: cmd
-        run: |
-          cd ${{ github.workspace }}\codeblocks_sfmirror\src
-          set Path="C:\temp\mingw32\bin;C:\temp\gow\bin"
-          dir C:\temp\mingw32\bin
-          mingw32-make -f Makefile_core all WX32_INCLUDE=D:\msys64\opt\wxwidgets3.2\include WX32_LIB=D:\msys64\opt\wxwidgets3.2\lib TARGET_OBJECT_DIR=.objs32
+      #- name: build CB inside cmd
+      #  shell: cmd
+     #   run: |
+      #    cd ${{ github.workspace }}\codeblocks_sfmirror\src
+     #     set Path="C:\temp\mingw32\bin;C:\temp\gow\bin"
+     #     dir C:\temp\mingw32\bin
+      #    mingw32-make -f Makefile_core all WX32_INCLUDE=D:\msys64\opt\wxwidgets3.2\include WX32_LIB=D:\msys64\opt\wxwidgets3.2\lib TARGET_OBJECT_DIR=.objs32
       
       - uses: actions/upload-artifact@v4
         with:
           name: codeblocks
-          path: ${{ github.workspace }}\codeblocks_sfmirror\src\devel32
+          path: ${{ github.workspace }}\codeblocks_sfmirror\src\Makefile_core
