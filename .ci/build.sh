@@ -20,8 +20,8 @@ git clone https://github.com/arnholm/codeblocks_sfmirror.git
 
 ## Building
 export PATH=$PATH:/opt/codeblocks/bin:/opt/mingw32/bin
+cp Makefile_core codeblocks_sfmirror/src/
 cd codeblocks_sfmirror/src/
 #cbp2make --config platform -unix
 #cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
-cp ../../Makefile_core codeblocks_sfmirror/src/
 MSYS2_ARG_CONV_EXCL=* mingw32-make -f Makefile_core WX32_INCLUDE=/opt/wxwidgets3.2/include WX32_LIB=/opt/wxwidgets3.2/lib TARGET_OBJECT_DIR=.objs32
