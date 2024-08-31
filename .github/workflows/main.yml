@@ -3,8 +3,8 @@ name: main32
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
+  #push:
+  #  branches: [ "main" ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -33,40 +33,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: build32
         shell: msys2 {0}
-        run: |
-          wget -q https://github.com/zxunge/build-wxWidgets/releases/download/wxWidgets-3.2.5-21-stl-cb-winlibs1420/wxWidgets-3.2.5-21-stl-cb-winlibs1420.7z
-          wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/Prerequisites/Mingw64dlls14.1.0.7z
-          wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/2024/CB_20240815_rev13542_win64.7z
-          #wget -q https://github.com/brechtsanders/winlibs_mingw/releases/download/14.2.0posix-18.1.8-12.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z
-          wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.5/wxWidgets-3.2.5-headers.7z
-          #wget -q https://sourceforge.net/projects/gnuwin32/files/zip/3.0/zip-3.0-bin.zip
-          #wget -q https://sourceforge.net/projects/unxutils/files/unxutils/current/UnxUtils.zip
-          wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/Prerequisites/wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z
-          7z x ./Mingw64dlls14.1.0.7z -o/opt/codeblocks/bin
-          7z x ./wxWidgets-3.2.5-headers.7z -o/opt/wxwidgets3.2
-          #7z x ./winlibs-i686-posix-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z -o/c/temp
-          7z x ./wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z -o/opt/codeblocks/bin
-          7z x ./CB_20240815_rev13542_win64.7z -o/opt/codeblocks/bin
-          #unzip zip-3.0-bin.zip -d /mingw32
-          #unzip -q UnxUtils.zip -d /opt/UnxUtils
-          7z x ./wxWidgets-3.2.5-21-stl-cb-winlibs1420.7z -o/opt/wxwidgets3.2
-          git clone https://github.com/bmatzelle/gow.git /c/temp/gow
-          export PATH=$PATH:/opt/codeblocks/bin
-          git clone https://github.com/arnholm/codeblocks_sfmirror.git
-          cd codeblocks_sfmirror/src/
-          cbp2make --config platform -unix
-          cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
-          #cp Makefile_core codeblocks_sfmirror/src/
+        run: .ci/build.sh
 
-      #- name: build CB inside cmd
-      #  shell: cmd
-     #   run: |
-      #    cd ${{ github.workspace }}\codeblocks_sfmirror\src
-     #     set Path="C:\temp\mingw32\bin;C:\temp\gow\bin"
-     #     dir C:\temp\mingw32\bin
-      #    mingw32-make -f Makefile_core all WX32_INCLUDE=D:\msys64\opt\wxwidgets3.2\include WX32_LIB=D:\msys64\opt\wxwidgets3.2\lib TARGET_OBJECT_DIR=.objs32
-      
       - uses: actions/upload-artifact@v4
         with:
-          name: codeblocks
-          path: ${{ github.workspace }}\codeblocks_sfmirror\src\Makefile_core
+          name: codeblocks32
+          path: ${{ github.workspace }}\codeblocks_sfmirror\src\devel32
