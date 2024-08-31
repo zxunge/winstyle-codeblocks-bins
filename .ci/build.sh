@@ -15,11 +15,12 @@ wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.5/wxWidget
 #7z x ./wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z -o/opt/codeblocks/bin
 #7z x ./CB_20240815_rev13542_win64.7z -o/opt/codeblocks/bin
 7z x ./wxWidgets-3.2.5-21-stl-cb-winlibs1420.7z -o/opt/wxwidgets3.2
-#git clone https://github.com/bmatzelle/gow.git
+git clone https://github.com/bmatzelle/gow.git /opt/gow
 git clone https://github.com/arnholm/codeblocks_sfmirror.git
 
 ## Building
-export PATH=$PATH:/opt/codeblocks/bin:/opt/mingw32/bin
+export PATH=$PATH:/opt/codeblocks/bin:/opt/mingw32/bin:/opt/gow/bin
+which zip
 cp Makefile_core codeblocks_sfmirror/src/
 cd codeblocks_sfmirror/src/
 #cbp2make --config platform -unix
