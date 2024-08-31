@@ -11,7 +11,7 @@ wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.5/wxWidget
 #wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/Prerequisites/wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z
 #7z x ./Mingw64dlls14.1.0.7z -o/opt/codeblocks/bin
 7z x ./wxWidgets-3.2.5-headers.7z -o/opt/wxwidgets3.2
-7z x ./winlibs-i686-posix-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z -o/c/temp
+7z x ./winlibs-i686-posix-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z -o/opt
 #7z x ./wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z -o/opt/codeblocks/bin
 #7z x ./CB_20240815_rev13542_win64.7z -o/opt/codeblocks/bin
 7z x ./wxWidgets-3.2.5-21-stl-cb-winlibs1420.7z -o/opt/wxwidgets3.2
