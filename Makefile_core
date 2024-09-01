@@ -1350,9 +1350,9 @@ before_src:
 
 after_src: 
 	cmd /c if not exist devel32\share\CodeBlocks mkdir devel32\share\CodeBlocks
-	zip -jq9 devel32\share\CodeBlocks\resources.zip src\resources\*.xrc
-	zip -jq9 devel32\share\CodeBlocks\start_here.zip src\resources\start_here\*.html src\resources\start_here\*.png
-	cmd /c "cd src\resources & zip -0 -q ..\..\devel32\share\CodeBlocks\resources.zip images\*.png images\16x16\*.png"
+	zip -jq9 devel32/share/CodeBlocks/resources.zip src/resources/*.xrc
+	zip -jq9 devel32/share/CodeBlocks/start_here.zip src/resources/start_here/*.html src/resources/start_here/*.png
+	cmd /c "cd src\resources & zip -0 -q ..\..\devel32\share\CodeBlocks\resources.zip images/*.png images/16x16/*.png"
 	cmd /c if not exist devel32\exchndl.dll if exist exchndl\win32\bin\*.dll xcopy /Y exchndl\win32\bin\*.dll devel32\
 	cmd /c if not exist devel32\symsrv.yes if exist exchndl\win32\bin\symsrv.yes xcopy /Y exchndl\win32\bin\symsrv.yes devel32\
 
@@ -1499,7 +1499,7 @@ before_abbreviations:
 
 after_abbreviations: 
 	cmd /c if not exist devel32\share\CodeBlocks mkdir devel32\share\CodeBlocks
-	zip -jq9 devel32\share\CodeBlocks\abbreviations.zip plugins\abbreviations\resources\manifest.xml plugins\abbreviations\resources\*.xrc
+	cmd /c "zip -jq9 devel32\share\CodeBlocks\abbreviations.zip plugins\abbreviations\resources\manifest.xml plugins\abbreviations\resources\*.xrc"
 
 abbreviations: before_abbreviations out_abbreviations after_abbreviations
 
