@@ -1358,6 +1358,8 @@ after_src:
 
 src: before_src out_src after_src
 
+devel32\libcodeblocks.a: 
+
 out_src: before_src $(OBJ_SRC)
 	$(LD) $(LIBDIR_SRC) -o $(OUT_SRC) $(OBJ_SRC)  $(LDFLAGS_SRC) -mwindows $(LIB_SRC)
 
