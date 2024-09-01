@@ -13,14 +13,16 @@ wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.5/wxWidget
 7z x ./wxWidgets-3.2.5-headers.7z -o/opt/wxwidgets3.2
 
 # Overwrite the original /c/mingw64
-rm -rf /c/mingw64 /c/mingw32
+mv /c/mingw64 /c/oldmingw64
+mv /c/mingw32 /c/oldmingw32
 7z x ./winlibs-i686-posix-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z -o/c/
 mv /c/mingw32 /c/mingw64
 
 #7z x ./wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z -o/opt/codeblocks/bin
 #7z x ./CB_20240815_rev13542_win64.7z -o/opt/codeblocks/bin
 7z x ./wxWidgets-3.2.5-21-stl-cb-winlibs1420.7z -o/opt/wxwidgets3.2
-git clone https://github.com/bmatzelle/gow.git /c/mingw64
+git clone https://github.com/bmatzelle/gow.git /opt/gow
+cp -rn /opt/gow/* /c/mingw64/
 git clone https://github.com/arnholm/codeblocks_sfmirror.git
 
 ## Building
