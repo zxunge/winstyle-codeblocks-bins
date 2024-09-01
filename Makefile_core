@@ -343,7 +343,7 @@ all: tinyxml autorevision consolerunner squirrel scintilla sdk src abbreviations
 clean: clean_tinyxml clean_autorevision clean_consolerunner clean_squirrel clean_scintilla clean_sdk clean_src clean_abbreviations clean_astyle clean_autosave clean_compiler_depslib clean_compiler clean_debugger clean_code_completion clean_class_wizard clean_default_mime_handler clean_occurrences_highlighting clean_open_files_list clean_projects_workspaces_importer clean_scripted_wizard clean_to_do clean_xp_look___feel
 
 before_tinyxml: 
-	zip -jq9 devel32\share\CodeBlocks\manager_resources.zip sdk\resources\*.xrc
+	cmd /c "zip -jq9 devel32\share\CodeBlocks\manager_resources.zip sdk\resources\*.xrc"
 	cmd /c if not exist $(OBJDIR_TINYXML)\\base\\tinyxml md $(OBJDIR_TINYXML)\\base\\tinyxml
 
 after_tinyxml: 
