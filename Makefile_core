@@ -955,7 +955,7 @@ before_sdk:
 
 after_sdk: 
 	cmd /c if not exist devel32\share\CodeBlocks mkdir devel32\share\CodeBlocks
-	cmd /c "zip -jq9 devel32/share/CodeBlocks/manager_resources.zip sdk\resources\*.xrc"
+	zip -jq9 devel32/share/CodeBlocks/manager_resources.zip sdk\resources\*.xrc
 	cmd /c "cd sdk\resources & zip -0 -q ..\..\devel32\share\CodeBlocks\manager_resources.zip images\*.png images\8x8\*.png images\10x10\*.png images\12x12\*.png images\16x16\*.png images\20x20\*.png images\24x24\*.png images\28x28\*.png images\32x32\*.png images\40x40\*.png images\48x48\*.png images\56x56\*.png images\64x64\*.png images\svg\*.svg"
 
 sdk: before_sdk out_sdk after_sdk
@@ -1342,6 +1342,8 @@ clean_sdk:
 	cmd /c rd $(OBJDIR_SDK)\\sdk
 	cmd /c rd $(OBJDIR_SDK)\\sdk\\mozilla_chardet\\src
 
+devel32\libcodeblocks.a: out_sdk 
+
 before_src: 
 	cmd /c if exist devel32\exchndl.dll del devel32\exchndl.dll
 	cmd /c if not exist devel32 md devel32
@@ -1357,8 +1359,6 @@ after_src:
 	cmd /c if not exist devel32\symsrv.yes if exist exchndl\win32\bin\symsrv.yes xcopy /Y exchndl\win32\bin\symsrv.yes devel32\
 
 src: before_src out_src after_src
-
-devel32\libcodeblocks.a: 
 
 out_src: before_src $(OBJ_SRC)
 	$(LD) $(LIBDIR_SRC) -o $(OUT_SRC) $(OBJ_SRC)  $(LDFLAGS_SRC) -mwindows $(LIB_SRC)
