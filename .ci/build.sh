@@ -25,4 +25,4 @@ cp Makefile_core codeblocks_sfmirror/src/
 cd codeblocks_sfmirror/src/
 #cbp2make --config platform -unix
 #cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
-MSYS2_ARG_CONV_EXCL='*' mingw32-make -f Makefile_core WX32_INCLUDE=D:/msys64/opt/wxwidgets3.2/include WX32_LIB=D:/msys64/opt/wxwidgets3.2/lib TARGET_OBJECT_DIR=.objs32
+MSYS2_ARG_CONV_EXCL='*' make -f Makefile_core WX32_INCLUDE=D:/msys64/opt/wxwidgets3.2/include WX32_LIB=D:/msys64/opt/wxwidgets3.2/lib TARGET_OBJECT_DIR=.objs32
