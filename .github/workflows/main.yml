@@ -25,6 +25,7 @@ jobs:
           msystem: MINGW32
           location: D:\
           install: >-
+            zip
             p7zip
             git
 
