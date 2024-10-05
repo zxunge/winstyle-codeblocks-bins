@@ -54,6 +54,7 @@ jobs:
           cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
           sed '/zip -jq9*/ s/\\/\//g' Makefile_core -i
           sed -i '85 s/LIB_SDK = $(LIB) -lshfolder -ltxml -lwxscintilla_cb -lsquirrel -lgdi32/LIB_SDK = -lshfolder -ltxml -lwxscintilla_cb $(LIB) -lsquirrel -lgdi32/' Makefile_core
+          sed 's/$(DEP_.*//g' Makefile_core -i
           export PATH=/opt/mingw32/bin:$PATH
           mingw32-make -f Makefile_core WX32_INCLUDE=/opt/wxwidgets3.2/include WX32_LIB=/opt/wxwidgets3.2/lib TARGET_OBJECT_DIR=.objs32
           
