@@ -60,7 +60,10 @@ jobs:
 
           ## Building plugins
           cbp2make -in ContribPlugins_wx32.workspace -out Makefile_plugins
-          find -iname "*.mak" | xargs -I {} sed -i {} '/zip -jq9*/ s/\\/\//g'
+          find -iname "*.mak" | while read line                                      
+          do                                                                         
+            sed -i '/zip -*/ s/\\/\//g' $line                                       
+          done
           mingw32-make -f Makefile_core WX32_INCLUDE=/opt/wxwidgets3.2/include WX32_LIB=/opt/wxwidgets3.2/lib TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make
           
       - uses: actions/upload-artifact@v4
