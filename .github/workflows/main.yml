@@ -28,6 +28,7 @@ jobs:
             zip
             p7zip
             git
+            svn
 
       - name: build32
         shell: msys2 {0}
@@ -46,10 +47,12 @@ jobs:
           7z x ./CB_20240815_rev13542_win64.7z -o/opt/codeblocks/bin
           7z x ./wxWidgets-3.2.6-23-stl-shared-cb-winlibs1420.7z -o/opt/wxwidgets3.2
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
+          svn checkout https://svn.code.sf.net/p/fortranproject/code/trunk FortranProject
 
           ## Building core
           export PATH=/opt/codeblocks/bin:$PATH
           cd codeblocks_sfmirror/src/
+          cp -rf ../../FortranProject ./plugins/contrib/
           cbp2make --config platform -unix
           cbp2make -in CodeBlocks_wx32.cbp -out Makefile_core
           sed '/zip -jq9*/ s/\\/\//g' Makefile_core -i
