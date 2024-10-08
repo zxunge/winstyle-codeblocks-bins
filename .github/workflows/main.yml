@@ -67,6 +67,8 @@ jobs:
           do                                                                         
             sed -i '/zip -*/ s/\\/\//g' $line                                       
           done
+          sed -i 's/plugins_contrib_fortranproject_fortranproject_cbsvn_wx32//g' Makefile_plugins
+          sed -i '20,21d' Makefile_plugins
           mingw32-make -f Makefile_plugins WX32_INCLUDE=/opt/wxwidgets3.2/include WX32_LIB=/opt/wxwidgets3.2/lib TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make
           
       - uses: actions/upload-artifact@v4
