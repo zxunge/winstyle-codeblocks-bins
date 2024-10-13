@@ -67,7 +67,8 @@ jobs:
           cbp2make -in ContribPlugins_wx32.workspace -out Makefile_plugins
           find -iname "*.mak" | while read line                                      
           do                                                                         
-            sed -i '/zip -*/ s/\\/\//g' $line                                       
+            sed -i '/zip -*/ s/\\/\//g' $line 
+            sed -i 's/$(DEP_.*//g' $line
           done
           sed -i 's/plugins_contrib_nassishneiderman_nassishneiderman_wx32//g' Makefile_plugins
           sed -i '41,42d' Makefile_plugins
