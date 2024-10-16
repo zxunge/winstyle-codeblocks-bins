@@ -69,7 +69,8 @@ jobs:
           do                                                                         
             sed -i '/zip -*/ s/\\/\//g' $line 
             sed -i 's/$(DEP_.*//g' $line
-            sed -i '/cmd \/c "*/ s/\//\\/g' $line 
+            sed -i '/cmd \/c "/ s/\//\\/g' $line
+            sed -i 's/cmd \\c/cmd \/c/g' $line
           done
           sed -i 's/plugins_contrib_nassishneiderman_nassishneiderman_wx32//g' Makefile_plugins
           sed -i '41,42d' Makefile_plugins
