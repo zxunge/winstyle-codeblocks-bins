@@ -72,7 +72,9 @@ jobs:
             sed -i '/cmd \/c "/ s/\//\\/g' $line
             sed -i 's/cmd \\c/cmd \/c/g' $line
           done
-          
+
+          sed -i 's/plugins_contrib_smartindent_smartindent_wx32//g' Makefile_plugins
+          sed -i '62,63d' Makefile_plugins
           sed -i 's/plugins_contrib_clangd_client_clangd_client_wx32//g' Makefile_plugins
           sed -i '57,58d' Makefile_plugins
           sed -i 's/plugins_contrib_help_plugin_help_plugin_wx32//g' Makefile_plugins
