@@ -87,6 +87,7 @@ jobs:
           sed -i '9,9 s/plugins_contrib_clangd_client_clangd_client_wx32//g' Makefile_plugins
           sed -i '9,9 s/plugins_contrib_help_plugin_help_plugin_wx32//g' Makefile_plugins
           sed -i '9,9 s/plugins_contrib_spellchecker_spellchecker_wx32//g' Makefile_plugins
+          sed -i '9,9 s/plugins_contrib_wxsmithcontribitems_wxsmithcontribitems_wx32//g' Makefile_plugins
           echo "---------------------------------"
           cat Makefile_plugins
           echo "---------------------------------"
