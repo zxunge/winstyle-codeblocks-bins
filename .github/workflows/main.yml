@@ -72,6 +72,10 @@ jobs:
             sed -i 's/$(DEP_.*//g' $line
             sed -i '/cmd \/c "/ s/\//\\/g' $line
             sed -i 's/cmd \\c/cmd \/c/g' $line
+            echo "---------------------------------"
+            echo $line
+            cat $line
+            echo "---------------------------------"
           done
 
           sed -i '9,9 s/plugins_contrib_doxyblocks_doxyblocks_wx32//g' Makefile_plugins
@@ -80,6 +84,9 @@ jobs:
           sed -i '9,9 s/plugins_contrib_clangd_client_clangd_client_wx32//g' Makefile_plugins
           sed -i '9,9 s/plugins_contrib_help_plugin_help_plugin_wx32//g' Makefile_plugins
           sed -i '9,9 s/plugins_contrib_spellchecker_spellchecker_wx32//g' Makefile_plugins
+          echo "---------------------------------"
+          cat Makefile_plugins
+          echo "---------------------------------"
           
           mingw32-make -f Makefile_plugins WX32_INCLUDE=/opt/wxwidgets3.2/include WX32_LIB=/opt/wxwidgets3.2/lib \
                                            TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make WX_VERSION=32 WX_SUFFIX=u \
