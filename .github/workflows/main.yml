@@ -68,6 +68,7 @@ jobs:
         shell: msys2 {0}
         run: |
           cd codeblocks_sfmirror/src/
+          export PATH=/opt/codeblocks/bin:$PATH
           cbp2make -in ContribPlugins_wx32.workspace -out Makefile_plugins
           find -iname "*.mak" | while read line                                      
           do                                                                         
@@ -95,6 +96,7 @@ jobs:
         shell: msys2 {0}
         run: |
           cd codeblocks_sfmirror/src/
+          export PATH=/opt/mingw32/bin:$PATH
           mingw32-make -f Makefile_plugins WX32_INCLUDE=/opt/wxwidgets3.2/include WX32_LIB=/opt/wxwidgets3.2/lib \
                                            TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make WX_VERSION=32 WX_SUFFIX=u \
                                            BOOST_INCLUDE=/opt/boost_1_86_0
