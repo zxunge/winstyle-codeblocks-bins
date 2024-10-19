@@ -22,13 +22,14 @@ jobs:
       - uses: msys2/setup-msys2@v2
         with:
           update: true
-          msystem: MINGW32
+          msystem: UCRT64
           location: D:\
           install: >-
             zip
             p7zip
             git
             svn
+            mingw-w64-ucrt-x86_64-texlive-core
 
       - name: Prepare and build core
         shell: msys2 {0}
@@ -51,6 +52,7 @@ jobs:
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
           svn checkout https://svn.code.sf.net/p/fortranproject/code/trunk FortranProject
 
+          cp /ucrt64/bin/repstopdf.exe /ucrt64/bin/epstopdf.exe
           ## Building core
           export PATH=/opt/codeblocks/bin:$PATH
           cd codeblocks_sfmirror/src/
