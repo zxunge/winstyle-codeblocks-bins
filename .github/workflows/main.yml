@@ -73,6 +73,7 @@ jobs:
             sed -i 's/cmd \\c/cmd \/c/g' $line
           done
 
+          sed -i '9,9 s/plugins_contrib_doxyblocks_doxyblocks_wx32//g' Makefile_plugins
           sed -i '9,9 s/plugins_contrib_source_exporter_exporter_wx32//g' Makefile_plugins
           sed -i '9,9 s/plugins_contrib_smartindent_smartindent_wx32//g' Makefile_plugins
           sed -i '9,9 s/plugins_contrib_clangd_client_clangd_client_wx32//g' Makefile_plugins
