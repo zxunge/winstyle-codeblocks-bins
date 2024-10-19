@@ -29,7 +29,6 @@ jobs:
             p7zip
             git
             svn
-            mingw-w64-ucrt-x86_64-texlive-full
 
       - name: Prepare and build core
         shell: msys2 {0}
