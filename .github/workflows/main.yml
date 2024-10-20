@@ -22,7 +22,7 @@ jobs:
       - uses: msys2/setup-msys2@v2
         with:
           update: true
-          msystem: UCRT64
+          msystem: MINGW32
           location: D:\
           install: >-
             zip
@@ -30,7 +30,7 @@ jobs:
             git
             svn
             unzip
-            mingw-w64-ucrt-x86_64-ghostscript
+            mingw-w64-i686-ghostscript
 
       - name: Prepare and build core
         shell: msys2 {0}
