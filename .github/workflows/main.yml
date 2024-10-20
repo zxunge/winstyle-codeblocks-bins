@@ -29,7 +29,6 @@ jobs:
             p7zip
             git
             svn
-            winpty
             unzip
             mingw-w64-ucrt-x86_64-ghostscript
 
@@ -38,6 +37,7 @@ jobs:
         run: |
           ## Files Downloading
           wget -q https://mirrors.ctan.org/support/epstopdf.zip
+          wget -q https://github.com/rprichard/winpty/releases/download/0.4.3/winpty-0.4.3-msys2-2.7.0-ia32.tar.gz
           wget -q https://archives.boost.io/release/1.86.0/source/boost_1_86_0.7z
           wget -q https://github.com/zxunge/build-wxWidgets/releases/download/wxWidgets-3.2.6-23-stl-shared-cb-winlibs1420/wxWidgets-3.2.6-23-stl-shared-cb-winlibs1420.7z
           wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/Prerequisites/Mingw64dlls14.1.0.7z
@@ -46,6 +46,8 @@ jobs:
           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.6/wxWidgets-3.2.6-headers.7z
           wget -q https://sourceforge.net/projects/codeblocks/files/Binaries/Nightlies/Prerequisites/wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z
           7z x ./Mingw64dlls14.1.0.7z -o/opt/codeblocks/bin
+          tar zxf winpty-0.4.3-msys2-2.7.0-ia32.tar.gz
+          mv winpty-0.4.3-msys2-2.7.0-ia32 /opt/winpty
           7z x ./wxWidgets-3.2.6-headers.7z -o/opt/wxwidgets3.2
           7z x ./winlibs-i686-posix-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z -o/opt
           7z x ./wxmsw32u_gcc_cb_wx325_2D_gcc1410-mingw64.7z -o/opt/codeblocks/bin
@@ -101,7 +103,7 @@ jobs:
         shell: msys2 {0}
         run: |
           cd codeblocks_sfmirror/src/
-          export PATH=/opt/epstopdf:/opt/mingw32/bin:$PATH
+          export PATH=/opt/winpty/bin:/opt/epstopdf:/opt/mingw32/bin:$PATH
           mingw32-make -f Makefile_plugins WX32_INCLUDE=/opt/wxwidgets3.2/include WX32_LIB=/opt/wxwidgets3.2/lib \
                                            TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make WX_VERSION=32 WX_SUFFIX=u \
                                            BOOST_INCLUDE=/opt/boost_1_86_0
