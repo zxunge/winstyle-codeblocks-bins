@@ -52,7 +52,6 @@ jobs:
           git clone https://github.com/arnholm/codeblocks_sfmirror.git
           svn checkout https://svn.code.sf.net/p/fortranproject/code/trunk FortranProject
 
-          cp /ucrt64/bin/repstopdf.exe /ucrt64/bin/epstopdf.exe
           ## Building core
           export PATH=/opt/codeblocks/bin:$PATH
           cd codeblocks_sfmirror/src/
@@ -103,7 +102,7 @@ jobs:
                                            TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make WX_VERSION=32 WX_SUFFIX=u \
                                            BOOST_INCLUDE=/opt/boost_1_86_0
           cp /opt/wxwidgets3.2/lib/gcc_dll/wxmsw32u_gcc_cb.dll /opt/mingw32/bin/libgcc_s_dw2-1.dll /opt/mingw32/bin/libstdc++-6.dll /opt/mingw32/bin/libwinpthread-1.dll ./devel32/
-          winpty cmd /c update32.bat
+          winpty cmd /c call update32.bat
         
       - uses: actions/upload-artifact@v4
         with:
