@@ -30,6 +30,7 @@ jobs:
             git
             svn
             winpty
+            unzip
             mingw-w64-ucrt-x86_64-ghostscript
 
       - name: Prepare and build core
