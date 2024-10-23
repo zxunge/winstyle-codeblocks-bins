@@ -106,9 +106,11 @@ jobs:
                                            TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make WX_VERSION=32 WX_SUFFIX=u \
                                            BOOST_INCLUDE=/opt/boost_1_86_0
           cp /opt/wxwidgets3.2/lib/gcc_dll/wxmsw32u_gcc_cb.dll /opt/mingw32/bin/libgcc_s_dw2-1.dll /opt/mingw32/bin/libstdc++-6.dll /opt/mingw32/bin/libwinpthread-1.dll ./devel32/
-          cp ../../update.exe ./
-          ./update 32
-          cp devel32/CbLauncher.exe output32/
+          #cp ../../update.exe ./
+          #./update 32
+          #cp devel32/CbLauncher.exe output32/
+          cp ../../Makefile_cmd ./
+          mingw32-make -f Makefile_cmd
         
       - uses: actions/upload-artifact@v4
         with:
