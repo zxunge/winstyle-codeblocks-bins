@@ -1,0 +1,6 @@
+# A auxiliary Makefile to execute .bat files
+
+all: update_bat
+
+update_bat: 
+    cmd /c call update32.bat
