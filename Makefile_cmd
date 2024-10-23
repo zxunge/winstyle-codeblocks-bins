@@ -3,4 +3,4 @@
 all: update_bat
 
 update_bat: 
-    cmd /c call update32.bat
+	cmd /c call update32.bat
