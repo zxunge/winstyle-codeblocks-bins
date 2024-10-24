@@ -18,8 +18,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      - uses: msys2/setup-msys2@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout CodeBlocks
+        uses: actions/checkout@v4
+        with:
+          repository: arnholm/codeblocks_sfmirror
+          path: codeblocks_sfmirror
+        
+      - name: Setup MSYS2
+        uses: msys2/setup-msys2@v2
         with:
           update: true
           msystem: MINGW32
@@ -27,7 +36,6 @@ jobs:
           install: >-
             zip
             p7zip
-            git
             svn
             unzip
             rsync
@@ -53,7 +61,6 @@ jobs:
           7z x ./wxWidgets-3.2.6-23-stl-shared-cb-winlibs1420.7z -o/opt/wxwidgets3.2
           7z x ./boost_1_86_0.7z -o/opt
           unzip -q epstopdf.zip -d /opt
-          git clone https://github.com/arnholm/codeblocks_sfmirror.git
           svn checkout https://svn.code.sf.net/p/fortranproject/code/trunk FortranProject
 
           ## Building core
@@ -106,18 +113,17 @@ jobs:
                                            TARGET_OBJECT_DIR=.objs32 MAKE=mingw32-make WX_VERSION=32 WX_SUFFIX=u \
                                            BOOST_INCLUDE=/opt/boost_1_86_0
           cp /opt/wxwidgets3.2/lib/gcc_dll/wxmsw32u_gcc_cb.dll /opt/mingw32/bin/libgcc_s_dw2-1.dll /opt/mingw32/bin/libstdc++-6.dll /opt/mingw32/bin/libwinpthread-1.dll ./devel32/
-          #cp ../../update.exe ./
-          #./update 32
-          #cp devel32/CbLauncher.exe output32/
           cp ../../Makefile_cmd ./
           mingw32-make -f Makefile_cmd
         
-      - uses: actions/upload-artifact@v4
+      - name: Upload the debug version of CodeBlocks
+        uses: actions/upload-artifact@v4
         with:
-          name: codeblocks32
+          name: codeblocks32_devel
           path: ${{ github.workspace }}\codeblocks_sfmirror\src\devel32
           
-      - uses: actions/upload-artifact@v4
+      - name: Upload the release version of CodeBlocks
+        uses: actions/upload-artifact@v4
         with:
           name: codeblocks32_output
           path: ${{ github.workspace }}\codeblocks_sfmirror\src\output32
